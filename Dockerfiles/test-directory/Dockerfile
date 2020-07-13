@@ -1,9 +1,8 @@
 FROM jupyter/base-notebook
 
-ENV TYLOR="tylor"
-
 RUN conda install --quiet --yes \
     'numpy' \
+    'pandas' \
     && \
     conda clean --al -f -y && \
     npm cache clean --force && \
