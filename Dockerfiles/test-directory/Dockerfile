@@ -1,5 +1,7 @@
 FROM jupyter/base-notebook
 
+ENV TYLOR="tylor"
+
 RUN conda install --quiet --yes \
     'numpy' \
     && \
