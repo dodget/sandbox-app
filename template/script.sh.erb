@@ -66,4 +66,4 @@ jupyter notebook \
            --NotebookApp.disable_check_xsrf=True
 EOF3
 
-singularity exec $SING_GPU $SING_BINDS $container_image $JOBROOT/jupyter.script.sh
+singularity exec $SING_GPU $SING_BINDS tylor-image $JOBROOT/jupyter.script.sh
