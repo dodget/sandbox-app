@@ -23,7 +23,7 @@ module list
 
 # Benchmark info
 echo "TIMING - Starting jupyter at: $(date)"
-export container_image=${CONTAINER_REPO}/${COURSE}/jupyterhub-current.sif
+export container_image=/n/academic_homes/g_34166/u_332158_g_34166/images/cs109a_latest.sif
 
 # Launch the Jupyter Notebook Server
 
@@ -48,7 +48,9 @@ chmod +x $JOBROOT/jupyter.script.sh
 <%- unless context.envscript.blank? -%>
 
 cat >> $JOBROOT/jupyter.script.sh <<EOF2
+
 [ -f <%= context.envscript.to_s %> ] && source <%= context.envscript.to_s %>
+
 EOF2
 
 <%- end -%>
@@ -64,6 +66,7 @@ jupyter notebook \
            --no-browser \
            --NotebookApp.allow_origin='*' \
            --NotebookApp.disable_check_xsrf=True
+
 EOF3
 
-singularity exec $SING_GPU $SING_BINDS tylor-image $JOBROOT/jupyter.script.sh
+singularity exec $SING_GPU $SING_BINDS $container_image $JOBROOT/jupyter.script.sh
